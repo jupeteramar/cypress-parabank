@@ -1,0 +1,14 @@
+{
+    "FirstName": "${faker.string.uuid()}",
+    "LastName": "Packard",
+    "Company": "HP Corporation",
+    "Address": "Adamson Center",
+    "Address2": "Makati City",
+    "State": "Florida",
+    "City": "Florida City",
+    "Zipcode": "1234",
+    "MobileNumber": "1234567890",
+    "SSN": "5522224554444",
+    "Username": "juandelacruz1",
+    "Password": "Consolacion"
+    }

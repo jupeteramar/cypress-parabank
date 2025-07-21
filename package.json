@@ -1,0 +1,27 @@
+{
+  "name": "cypressautomation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "parabank-register-headed": "npx cypress run --spec 'cypress/e2e/Registration.cy.js' --browser edge --headed",
+    "parabank-register-headless": "npx cypress run --spec 'cypress/e2e/Registration.cy.js' --browser edge",
+    "swaglabs-login-headed": "npx cypress run --spec 'cypress/e2e/myFirstTest.cy.js' --browser edge --headed",
+    "swaglabs-login-headless": "npx cypress run --spec 'cypress/e2e/myFirstTest.cy.js' --browser edge",
+    "swaglabs-login": "npx cypress run --spec 'cypress/e2e/myFirstTest.cy.js' --browser edge",
+    "orangehrm-ui-headed": "npx cypress run --spec 'cypress/e2e/OrangeHRM/OrangeHRM.cy.js' --browser edge --headed",
+    "orangehrm-folder-headed": "npx cypress run --spec 'cypress/e2e/OrangeHRM*' --browser edge --headed",
+    "orangehrm-swaglabs-headed": "npx cypress run --spec 'cypress/e2e/myFirstTest.cy.js,cypress/e2e/Assertions.cy.js' --browser edge --headed",
+    "orangehrm-swaglabs-headless": "npx cypress run --spec 'cypress/e2e/myFirstTest.cy.js,cypress/e2e/Assertions.cy.js' --browser edge"
+  },
+  "author": "Jude",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "cypress": "^14.5.1",
+    "cypress-fixture-faker": "^1.0.4"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^2.0.1"
+  }
+}

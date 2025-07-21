@@ -1,0 +1,15 @@
+{
+    "UserInfo": {
+        "firstName": "Juan",
+        "lastName": "Dela Cruz",
+        "addressStreet": "Ayala",
+        "addressCity": "Makati",
+        "addressState": "NCR",
+        "zipCode": "1600",
+        "phoneNumber": "09245642124",
+        "ssn": "4234562443",
+
+        "username": "juandcruz24",
+        "password": "Password"
+    }
+}
