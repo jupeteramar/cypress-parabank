@@ -23,6 +23,16 @@ It tests different modules of the ParaBank website including Registration, Authe
 1. Cypress (core dependency)
   npm install cypress --save-dev
 
+##🚦Running Test
+npx run open
+
+## 🧵Test Scripts
+parabank-transact-headed
+parabank-transact-headless
+parabank-user-headed
+parabank-user-headless
+
+
 
 ## 🧩 Custom Commands
 Custom Cypress commands can be found in:
