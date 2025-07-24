@@ -41,7 +41,7 @@ describe("Registration", () => {
     })
 
     // Accessing Data Set from FakerJS (Dynamic)
-    it('Faker | Register a User', () => {
+    it.only('Faker | Register a User', () => {
         const Userinput = automationExerciseTestData()
         cy.get("input[id='customer.firstName']").should('be.visible').and('be.empty').type(Userinput.firstName);
         cy.get("input[id='customer.lastName']").should('be.visible').and('be.empty').type(Userinput.lastName);

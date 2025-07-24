@@ -81,7 +81,7 @@ describe('Bank Transactions', () => {
         cy.loanApplication(loan.loanAmount, loan.downpayment, loan.accID)
     })
 
-    it.only('Find Transaction (via ID)', () => {
+    it('Find Transaction (via ID)', () => {
         cy.getTransaction(1);
     })
 })
