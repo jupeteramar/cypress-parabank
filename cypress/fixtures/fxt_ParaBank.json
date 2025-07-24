@@ -8,8 +8,19 @@
         "zipCode": "1600",
         "phoneNumber": "09245642124",
         "ssn": "4234562443",
-
         "username": "juandcruz24",
         "password": "Password"
+    },
+    "PayBillData": {
+        "payeeName": "Hector",
+        "addressStreet": "Ayala",
+        "addressCity": "Makati",
+        "addressState": "NCR",
+        "zipCode": "1600",
+        "phoneNumber": "09245642124",
+
+        "accTo": "54321",
+        "amount": "1",
+        "accFrom": 0
     }
 }

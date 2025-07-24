@@ -35,7 +35,7 @@ class UserRegistration {
         });
     }
 
-    checkAllLabelsUsingLoop() {
+    assertUserRegistrationlabels() {
         this.labelList.forEach((label) => {
             cy.get(label.selector).should('have.text', label.text);
         });
@@ -44,52 +44,6 @@ class UserRegistration {
     inputFirstName() {
         cy.get("input[id='customer.firstName']").should('be.visible').and('be.empty').type(userData.UserInfo.firstName);
     }
-
-    // Labels
-    lblFirstName = ':nth-child(1) > [align="right"] > b';
-    lblLastName = ':nth-child(2) > [align="right"] > b';
-    lblAddress = ':nth-child(3) > [align="right"] > b';
-    lblAddressCity = ':nth-child(4) > [align="right"] > b';
-    lblAdressState = ':nth-child(5) > [align="right"] > b';
-    lblZip = ':nth-child(6) > [align="right"] > b';
-    lblPhoneNumber = ':nth-child(7) > [align="right"] > b';
-    lblSSN = ':nth-child(8) > [align="right"] > b';
-
-    lblUsername = ':nth-child(10) > [align="right"] > b';
-    lblPassword = ':nth-child(11) > [align="right"] > b';
-    lblConfirmPass = ':nth-child(12) > [align="right"] > b';
-
-    // Inputs
-    txtFirstName = 'input[id="customer.firstName"]';
-    txtLastName = 'input[id="customer.lastName"]';
-    txtAddress = 'input[id="customer.address.street"]';
-    txtAddressCity = 'input[id="customer.address.city"]';
-    txtAdressState = 'input[id="customer.address.zipCode"]';
-    txtZip = 'input[id="customer.address.zipCode"]]';
-    txtPhoneNumber = 'input[id="customer.phoneNumber"]';
-    txtSSN = 'input[id="customer.ssn"]';
-
-    txtUsername = 'input[id="customer.address.zipCode"]';
-    txtPassword = 'input[id="customer.address.zipCode"]';
-    txtConfirmPass = 'input[id="customer.address.zipCode"]';
-
-    // Button
-    btnRegister = 'input[type="submit"][value="Register"]';
-
-    registerNewUser() {
-
-    }
-
-    checkAllLabelsUsingLoop() {
-        this.labelList.forEach((label) => {
-            cy.get(label.selector).should('have.text', label.text);
-        });
-    }
-
-    checkLabelsVisibility() {
-        cy.get(this.lblFirstName).should('be.visible').and
-    }
-
 
 }
 

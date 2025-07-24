@@ -9,6 +9,7 @@ describe("Registration", () => {
     const userProfile = new ParabankUserProfile()
 
     beforeEach(() => {
+        // Visit Registration Page
         cy.visit("https://parabank.parasoft.com/parabank/register.htm");
     })
 
@@ -60,10 +61,13 @@ describe("Registration", () => {
         cy.get('h1[class="title"]').should('contain', "Welcome " + Userinput.signUpName)
     })
 
+
+    // Verifying labels and its values using POM
     it('Verify field Display in registration page with POM', () => {
-        userProfile.checkAllLabelsUsingLoop();
+        userProfile.assertUserRegistrationlabels();
     })
 
+    // Command contains the fixture to pass to the POM for inputting the User's Data
     it.only('Register User using POM and Command', () => {
         cy.addUserFixture();
     })
