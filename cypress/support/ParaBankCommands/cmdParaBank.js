@@ -134,16 +134,6 @@ Cypress.Commands.add("viewUserProfile", (url, userObjectData) => {
         });
 })
 
-// Pay Bills with valid inputs from fixture JSON
-// Cypress.Commands.add("payBill", (ssf) => {
-//     var ssFilename = "BillsPayment"
-//     cy.get('a[href="billpay.htm"]').click().wait(500)
-//     cy.fixture('fxt_Parabank').then((userData) => {
-//         cy.log(userData.PayBillData);
-//         payeeData.payBill(userData.PayBillData, ssf)
-//     });
-// })
-
 Cypress.Commands.add("payBill", (ssf) => {
     return cy.fixture('fxt_Parabank').then((userData) => {
         cy.log(userData.PayBillData);
@@ -211,52 +201,34 @@ Cypress.Commands.add("getTotalBalance", () => {
         });
 });
 
-// Cypress.Commands.add("getTableRowCount", () => {
-//     cy.get(`#accountTable tbody tr`).its('length').should('be.greaterThan', 0).then(($totalRows) => {
-//         var totalBalance = 0;
-//         $totalRows -= 1;
-//         cy.log(`Total row is: ${$totalRows}`)
-//         cy.then(() => {
-//             for (var i = 1; i <= $totalRows; i++) {
-//                 cy.get(`tbody > :nth-child(${i}) > :nth-child(2)`).then(($balance) => {
-//                     var bal = parseFloat($balance.text().replace('$', '').trim()).toFixed(2);
-//                     cy.log(bal);
-//                     cy.then((), =>{
-//                         totalBalance += bal;
-//                     })
-//                 })
-//             }
-//         })
-//         cy.log(`Total Balance: $${totalBalance}`)
-//     })
-// });
+// Cypress.Commands.add('performTransfer', ((accFrom, accTo, amount)) => {
+
+// })
 
 
 Cypress.Commands.add('transferFund', (accFrom, accTo, amount) => {
-    cy.getBankAccount(accFrom)
-        .then(accdata1 => { // Get details of Sender of Fund
-            //cy.log(`AccFrom: ${accdata1.id} | $${accdata1.bal}`);
-            cy.getBankAccount(accTo)
-                .then((accdata2) => { // Get Receiver of Sender of Fund
-                    //cy.log(`AccTo: ${accdata2.id} | $${accdata2.bal}`)
-                    cy.get('a[href="transfer.htm"]').click().wait(200)
+    cy.getBankAccount(accFrom).then(accdata1 => { // Get details of Sender of Fund
+        //cy.log(`AccFrom: ${accdata1.id} | $${accdata1.bal}`);
+        cy.getBankAccount(accTo).then((accdata2) => { // Get Receiver of Sender of Fund
+            //cy.log(`AccTo: ${accdata2.id} | $${accdata2.bal}`)
+            cy.get('a[href="transfer.htm"]').click().wait(200)
+                .then(() => {
+                    cy.get('#amount').clear().type(amount)
+                    cy.get('#fromAccountId').select(accdata1.id)
+                    cy.get('#toAccountId').select(accdata2.id)
+                    cy.get('input[type="submit"]').click().wait(100)
                         .then(() => {
-                            cy.get('#amount').clear().type(amount)
-                            cy.get('#fromAccountId').select(accdata1.id)
-                            cy.get('#toAccountId').select(accdata2.id)
-                            cy.get('input[type="submit"]').click().wait(100)
-                                .then(() => {
-                                    cy.get('#showResult').should('contain', "Transfer Complete!")
-                                    cy.get('#amountResult').should('contain', `$${amount.toFixed()}`)
-                                    cy.get('#fromAccountIdResult').should('contain', accdata1.id)
-                                    cy.get('#toAccountIdResult').should('contain', accdata2.id)
-                                })
+                            cy.get('#showResult').should('contain', "Transfer Complete!")
+                            cy.get('#amountResult').should('contain', `$${amount.toFixed()}`)
+                            cy.get('#fromAccountIdResult').should('contain', accdata1.id)
+                            cy.get('#toAccountIdResult').should('contain', accdata2.id)
                         })
                 })
-        });
+        })
+    });
 })
 
-Cypress.Commands.add('transferFundComputation', () => {
+Cypress.Commands.add('transferFundComputation', (accFrom, accTo, amount) => {
     cy.getBankAccount(accFrom)
         .then(accdata1 => { // Get details of Sender of Fund
             //cy.log(`AccFrom: ${accdata1.id} | $${accdata1.bal}`);
@@ -271,10 +243,20 @@ Cypress.Commands.add('transferFundComputation', () => {
                             cy.get('input[type="submit"]').click().wait(100)
                                 .then(() => {
                                     cy.get('#showResult').should('contain', "Transfer Complete!")
-                                    cy.get('#amountResult').should('contain', `$${amount.toFixed()}`)
+                                    cy.get('#amountResult').should('contain', `$${amount.toFixed(2)}`)
                                     cy.get('#fromAccountIdResult').should('contain', accdata1.id)
                                     cy.get('#toAccountIdResult').should('contain', accdata2.id)
-                                    cy.get('a[href="overview.htm"]').click().wait(100)
+                                    cy.get('a[href="overview.htm"]').click().wait(100).then(() => {
+                                        const prevbal1 = Number(parseFloat(accdata1.bal).toFixed(2));
+                                        const prevbal2 = Number(parseFloat(accdata2.bal).toFixed(2));
+
+                                        const amt = Number(amount.toFixed(2));
+                                        const newbal1 = Number((prevbal1 - amt).toFixed(2));
+                                        const newbal2 = Number((prevbal2 + amt).toFixed(2));
+
+                                        cy.get(`tbody > :nth-child(${accFrom}) > :nth-child(2)`).should('contain', newbal1);
+                                        cy.get(`tbody > :nth-child(${accTo}) > :nth-child(2)`).should('contain', newbal2);
+                                    })
 
                                 })
                         })

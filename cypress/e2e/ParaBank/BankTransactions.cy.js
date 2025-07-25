@@ -50,9 +50,20 @@ describe('Bank Transactions', () => {
         const sendMoney = {
             sendFrom: 1,
             sentTo: 2,
-            amount: 10
+            amount: 10.00
         }
         cy.transferFund(sendMoney.sendFrom, sendMoney.sentTo, sendMoney.amount);
+        // cy.get('a[href="billpay.htm"]').click().wait(500);
+        // cy.payBill("PB_PayBillsValidInput");
+    })
+
+    it.only('Verify Transfer Fund Computation', () => {
+        const sendMoney = {
+            sendFrom: 1,
+            sentTo: 2,
+            amount: 10.00
+        }
+        cy.transferFundComputation(sendMoney.sendFrom, sendMoney.sentTo, sendMoney.amount);
         // cy.get('a[href="billpay.htm"]').click().wait(500);
         // cy.payBill("PB_PayBillsValidInput");
     })
