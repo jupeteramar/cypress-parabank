@@ -83,17 +83,19 @@ describe('Bank Transactions', () => {
         cy.getBankAccount(1);
     })
 
-    it('Loan Application', () => {
+    it.only('Loan Application', () => {
         const loan = {
             loanAmount: 50,
             downpayment: 10,
             accID: 1
         }
-        cy.loanApplication(loan.loanAmount, loan.downpayment, loan.accID)
+        cy.loanApplication(loan.loanAmount, loan.downpayment, loan.accID)        
     })
 
     it('Find Transaction (via ID)', () => {
         cy.getTransaction(1);
+
+        //Math.random()
     })
 })
 
