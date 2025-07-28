@@ -1,0 +1,22 @@
+name: Run ParaBank Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cy-parabank-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci  # faster & cleaner than `npm install` in CI
+
+      - name: Run Cypress tests in TestAPI folder
+        uses: cypress-io/github-action@v6
+        with:
+          spec: cypress/e2e/ParaBank/**/*  # ✅ This replaces `npx cypress run --spec ...`
