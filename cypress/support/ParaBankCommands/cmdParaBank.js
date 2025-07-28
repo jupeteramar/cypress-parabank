@@ -201,9 +201,22 @@ Cypress.Commands.add("getTotalBalance", () => {
         });
 });
 
-// Cypress.Commands.add('performTransfer', ((accFrom, accTo, amount)) => {
-
-// })
+Cypress.Commands.add('performTransfer', ((accFromID, accToID, amount) => {
+    cy.get('a[href="transfer.htm"]').click().wait(200)
+        .then(() => {
+            cy.get('#amount').clear().type(amount)
+            cy.get('#fromAccountId').select(accFromID)
+            cy.get('#toAccountId').select(accToID)
+            cy.get('input[type="submit"]').click().wait(100)
+                .then(() => {
+                    cy.get('#showResult').should('contain', "Transfer Complete!")
+                    cy.get('#amountResult').should('contain', `$${amount.toFixed()}`)
+                    cy.get('#fromAccountIdResult').should('contain', accdata1.id)
+                    cy.get('#toAccountIdResult').should('contain', accdata2.id)
+                })
+        })
+})
+)
 
 
 Cypress.Commands.add('transferFund', (accFrom, accTo, amount) => {

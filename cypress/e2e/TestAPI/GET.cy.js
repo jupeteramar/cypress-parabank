@@ -76,7 +76,7 @@ describe('GET Requests', () => {
     it('200 - GET Specific User', () => {
         cy.request({
             method: 'GET',
-            url: 'https://petstore.swagger.io/v2/user/johnsnow', // Pet Store API
+            url: 'https://petstore.swagger.io/v2/user/musique', // Pet Store API
             failOnStatusCode: false,
         }).then((response) => {
             // ✅ Assert status
@@ -162,7 +162,7 @@ describe('GET Requests', () => {
             //expect(response.headers['content-type']).to.include('application/json');
             cy.log(JSON.stringify(response.body));
             // ✅ Assert response body
-            //cy.expect(response.body).to.have.property('id')
+        //cy.expect(response.body).to.have.property('id')
         });
     });
 

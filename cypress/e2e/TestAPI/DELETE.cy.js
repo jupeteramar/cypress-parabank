@@ -3,6 +3,23 @@
 import '../../support/ParaBankCommands/cmdParaBank';
 
 describe('DELETE Requests', () => {
+    it('200 - DELETE Order', () => {
+        cy.request({
+            method: 'DELETE',
+            url: 'https://petstore.swagger.io/v2/store/order/22', // Pet Store API
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8'
+            },
+            failOnStatusCode: false
+        }).then((response) => {
+            // ✅ Assert response status
+            expect(response.status).to.eq(200); // sometimes 204 or 202 depending on the API
+            cy.log(JSON.stringify(response.body))
+            // ✅ Assert response body is empty (common in DELETE)
+            //expect(response.body).to.be.empty;
+        });
+    });
+
     it('404 - DELETE User Unsuccessful (No User Found)', () => {
         cy.request({
             method: 'DELETE',
@@ -72,20 +89,5 @@ describe('DELETE Requests', () => {
         });
     });
 
-    it('200 - DELETE Order', () => {
-        cy.request({
-            method: 'DELETE',
-            url: 'https://petstore.swagger.io/v2/store/order/22', // Pet Store API
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
-            failOnStatusCode: false
-        }).then((response) => {
-            // ✅ Assert response status
-            expect(response.status).to.eq(200); // sometimes 204 or 202 depending on the API
-            cy.log(JSON.stringify(response.body))
-            // ✅ Assert response body is empty (common in DELETE)
-            //expect(response.body).to.be.empty;
-        });
-    });
+
 });
