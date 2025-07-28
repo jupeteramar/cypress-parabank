@@ -1,28 +1,23 @@
-name: Run Cypress API Tests
- 
+name: Run API Pet Store Tests
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
- 
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
- 
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # faster & cleaner than `npm install` in CI
 
       - name: Run Cypress tests in TestAPI folder
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --spec "cypress/e2e/TestAPI/**/*"
+          spec: cypress/e2e/TestAPI/**/*  # ✅ This replaces `npx cypress run --spec ...`
