@@ -1,4 +1,4 @@
-name: Run API Pet Store Tests
+name: Run Cypress API Tests
  
 on:
   push:
@@ -7,24 +7,20 @@ on:
     branches: [main]
  
 jobs:
-  ui-tests:
+  cypress-run:
     runs-on: ubuntu-latest
+ 
     steps:
-      # your existing UI test steps
-
-  api-tests:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
+          node-version: 20
+ 
       - name: Install dependencies
         run: npm install
-
-      - name: Run Cypress API tests in Edge
+        
+      - name: Run API Tests
         run: npx cypress run --spec "cypress/e2e/TestAPI" --browser edge
