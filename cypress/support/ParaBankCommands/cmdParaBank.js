@@ -25,7 +25,7 @@ Cypress.Commands.add('verifyUserExistence', () => {
 })
 
 Cypress.Commands.add('uLogin', () => {
-    cy.fixture('fxt_Parabank').then((userData) => {
+    cy.fixture('fxt_Parabank.json').then((userData) => {
         cy.visit("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC");
         cy.get('input[name="username"]').type(userData.UserInfo.username);
         cy.get('input[name="password"]').type(userData.UserInfo.password);
@@ -43,7 +43,7 @@ Cypress.Commands.add('screencapture', (name, index) => {
 // Register a New User
 Cypress.Commands.add('addUserFixture', () => {
     cy.visit("https://parabank.parasoft.com/parabank/register.htm");
-    cy.fixture('fxt_Parabank').then((userData) => {
+    cy.fixture('fxt_Parabank.json').then((userData) => {
         registerPOM.registerNewUserPOM(userData.UserInfo);
 
         /*
@@ -135,7 +135,7 @@ Cypress.Commands.add("viewUserProfile", (url, userObjectData) => {
 })
 
 Cypress.Commands.add("payBill", (ssf) => {
-    return cy.fixture('fxt_Parabank').then((userData) => {
+    return cy.fixture('fxt_Parabank.json').then((userData) => {
         cy.log(userData.PayBillData);
         return payeeData.payBill(userData.PayBillData, ssf);
     });
@@ -145,7 +145,7 @@ Cypress.Commands.add("payBill", (ssf) => {
 Cypress.Commands.add("payBillInvalidInputs", () => {
     var ssFilename = "BillsPayment"
     cy.get('a[href="billpay.htm"]').click().wait(500)
-    cy.fixture('fxt_Parabank').then((userData) => {
+    cy.fixture('fxt_Parabank.json').then((userData) => {
         cy.log(userData.PayBillData);
         payeeData.payBill(userData.PayBillData)
     });

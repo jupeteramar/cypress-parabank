@@ -10,9 +10,9 @@ describe('User Account Management', () => {
         cy.url().should('contain', "/overview.htm");
     })
 
-    // This test case is using the Test Data from the fixture file, fxt_Parabank.json > UpdateUserInfo
+    // This test case is using the Test Data from the fixture file, fxt_Parabank.json.json > UpdateUserInfo
     it("Update Profile with valid fields", () => {
-        cy.fixture('fxt_Parabank').then((userData) => {
+        cy.fixture('fxt_Parabank.json').then((userData) => {
             // Verify if the account is existing
             cy.verifyUserExistence()
             // Update the User's Profile
@@ -37,7 +37,7 @@ describe('User Account Management', () => {
         cy.verifyUserExistence()
         cy.updateUserProfile('a[href="updateprofile.htm"]', userUpdateData)
 
-        // cy.fixture('fxt_Parabank').then((userUpdateData) => {
+        // cy.fixture('fxt_Parabank.json').then((userUpdateData) => {
 
         // })
     })
