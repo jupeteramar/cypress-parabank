@@ -15,14 +15,14 @@ describe('Bank Transactions', () => {
 
     // BANK ACCOUNT CREATION
     it("Open New Savings Account", () => {
-        cy.fixture('fxt_Parabank.json').then((userData) => {
+        cy.fixture('fxt_ParaBank').then((userData) => {
             cy.addNewAccount(1, "AddNewSavingsAccount");
         })
     })
 
 
     it("Open New Checking Account", () => {
-        cy.fixture('fxt_Parabank.json').then((userData) => {
+        cy.fixture('fxt_ParaBank').then((userData) => {
             cy.addNewAccount(0, "AddNewCheckingAccount");
         })
     })

@@ -12,7 +12,7 @@ It tests different modules of the ParaBank website including Registration, Authe
 │   └── YserAccount.cy.js
 │   └── UserRegistration.cy.js
 ├── fixtures #static data
-│   └── fxt_Parabank.json.json
+│   └── fxt_ParaBank.json
 ├── support/ # Custom commands & setup
 │ ├── ParaBankCommands
 │   └── cmdParaBank.js
