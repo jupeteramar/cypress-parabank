@@ -57,7 +57,7 @@ describe('Bank Transactions', () => {
         // cy.payBill("PB_PayBillsValidInput");
     })
 
-    it.only('Verify Transfer Fund Computation', () => {
+    it('Verify Transfer Fund Computation', () => {
         const sendMoney = {
             sendFrom: 1,
             sentTo: 2,
