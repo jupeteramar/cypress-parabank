@@ -1,5 +1,4 @@
-name: Run API Pet Store Tests
-
+name: Run ParaBank Tests
 on:
   push:
     branches: [main]
@@ -7,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  cypress-run:
+  cy-parabank-run:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,4 +19,7 @@ jobs:
       - name: Run Cypress tests in TestAPI folder
         uses: cypress-io/github-action@v6
         with:
-          spec: cypress/e2e/TestAPI/**/*  # ✅ This replaces `npx cypress run --spec ...`
+          spec: cypress/e2e/ParaBank/**/*  # ✅ This replaces `npx cypress run --spec ...`
+      
+      - name: List fixture files
+        run: ls -R cypress/fixtures
