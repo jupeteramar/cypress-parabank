@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "petstore-api": "npx cypress run --spec 'cypress/e2e/TestAPI'",
     "parabank-transact-headed": "npx cypress run --spec 'cypress/e2e/BankTransactions.cy.js' --browser edge --headed",
     "parabank-transact-headless": "npx cypress run --spec 'cypress/e2e/BankTransactions.cy.js' --browser edge",
     "parabank-user-headed": "npx cypress run --spec 'cypress/e2e/UserAccount.cy.js' --browser edge --headed",
