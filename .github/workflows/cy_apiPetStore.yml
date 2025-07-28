@@ -11,19 +11,18 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
- 
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
- 
+          node-version: '18'
+
       - name: Install dependencies
         run: npm install
-        
-      - name: Run Cypress API tests in Edge
+
+      - name: Run Cypress tests in TestAPI folder
         uses: cypress-io/github-action@v6
         with:
-          browser: edge
-          command: npx cypress run --spec "cypress/e2e/TestAPI"
+          command: npx cypress run --spec "cypress/e2e/TestAPI/**/*"
