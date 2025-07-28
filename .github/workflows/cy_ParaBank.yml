@@ -20,3 +20,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           spec: cypress/e2e/ParaBank/**/*  # ✅ This replaces `npx cypress run --spec ...`
+      
+      - name: List fixture files
+        run: ls -R cypress/fixtures
