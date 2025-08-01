@@ -10,8 +10,8 @@ var today = new Date();
 const formatToday = today.toDateString().replace(/^\w+ /, '') + ' - ' + today.toTimeString().slice(0, 5);
 
 Cypress.Commands.add('verifyUserExistence', () => {
-    cy.uLogin().wait(1000)
-    cy.url({ timeout: 5000 }).then((currentUrl) => {
+    cy.uLogin().wait(100)
+    cy.url({ timeout: 3000 }).then((currentUrl) => {
         // verify if the account is existing
         if (currentUrl.includes('/overview.htm')) {
             // User exist

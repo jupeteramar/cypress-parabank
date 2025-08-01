@@ -22,7 +22,8 @@
   "dependencies": {
     "@faker-js/faker": "^9.9.0",
     "cypress": "^14.5.1",
-    "cypress-fixture-faker": "^1.0.4"
+    "cypress-fixture-faker": "^1.0.4",
+    "cypress-plugin-api": "^2.11.2"
   },
   "devDependencies": {
     "cypress-xpath": "^2.0.1"

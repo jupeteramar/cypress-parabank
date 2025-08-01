@@ -10,7 +10,7 @@ beforeEach(() => {
 })
 
 
-describe('Bank Transactions', () => {
+describe('Bank Transactions',  () => {
     const payeeData = new pbBillsPayment();
 
     // BANK ACCOUNT CREATION
@@ -79,11 +79,11 @@ describe('Bank Transactions', () => {
     //     // cy.payBill("PB_PayBillsValidInput");
     // })
 
-    it('Check Total Balance', () => {
+    it.only('Check Total Balance', () => {
         cy.getBankAccount(1);
     })
 
-    it.only('Loan Application', () => {
+    it('Loan Application', () => {
         const loan = {
             loanAmount: 50,
             downpayment: 10,

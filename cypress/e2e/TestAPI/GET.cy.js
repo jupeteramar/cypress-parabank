@@ -1,5 +1,5 @@
 /// <reference types='Cypress' />
-
+//import 'cypress-plugin-api';
 import '../../support/ParaBankCommands/cmdParaBank';
 
 
@@ -55,7 +55,7 @@ describe('GET Requests', () => {
     // });
 
     it('200 - GET Specific Pet', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/pet/2', // Pet Store API
             headers:{
@@ -74,7 +74,7 @@ describe('GET Requests', () => {
     });
 
     it('200 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/musique', // Pet Store API
             failOnStatusCode: false,
@@ -98,7 +98,7 @@ describe('GET Requests', () => {
     });
 
     it('404 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/johnsnowhite', // Pet Store API
             failOnStatusCode: false,
@@ -115,7 +115,7 @@ describe('GET Requests', () => {
     });
 
     it('400 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/[%7B%25%7D]', // Pet Store API
             failOnStatusCode: false,
@@ -132,7 +132,7 @@ describe('GET Requests', () => {
     });
 
     it('404 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/{}}', // Pet Store API
             failOnStatusCode: false,
@@ -149,7 +149,7 @@ describe('GET Requests', () => {
     });
 
     it('405 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/', // Pet Store API
             body: [],
@@ -167,7 +167,7 @@ describe('GET Requests', () => {
     });
 
     it('200 - GET Specific User', () => {
-        cy.request({
+        cy.api({
             method: 'GET',
             url: 'https://petstore.swagger.io/v2/user/', // Pet Store API
             failOnStatusCode: false,

@@ -2,7 +2,7 @@
 
 import '../../support/ParaBankCommands/cmdParaBank';
 
-describe('DELETE Requests', () => {
+describe('DELETE Requests', { env: { requestMode: true }}, () => {
     it('200 - DELETE Order', () => {
         cy.request({
             method: 'DELETE',
